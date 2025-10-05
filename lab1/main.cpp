@@ -53,5 +53,5 @@ int main() {
     cout << "Попарная разность: " << res2 << ", " << res3 << endl;
     cout << "Произведение: " << res4 << endl;
     cout << "Частное: " << res5 << endl;
-
+    return 0;
 }
