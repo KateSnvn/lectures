@@ -22,7 +22,7 @@ int main(){
     for (short i = 0; i < N; i++){
         float num;
         cin >> num;
-        if ((num > -0.36) & (num <= 10.1)){
+        if ((num > -0.36) && (num <= 10.1)){
             flag = true;
             if (num > max_num){
                 max_num = num;
