@@ -66,8 +66,10 @@ int main(){
         for (int j = 0; j < cols; j++){
             summa += abs(matrix[i][j]);
         }
-        max_sum = max(summa, max_sum);
-        max_index = max(i, max_index);
+        if (summa > max_sum){
+            max_sum = summa;
+            max_index = i;
+        }
     }
 
     for (int j = 0; j < cols; j++){
