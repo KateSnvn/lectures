@@ -3,30 +3,28 @@ using namespace std;
 
 //3 вариант
 
-void operations(int num1, int num2){
+int operations(int num1, int num2){
+    cout << "исп. функция суммы 2х чисел" << endl;
     if ((num1 % num2) == 0){
-        cout << (num1 / num2);
+        return (num1 / num2);
     }
 
     else if ((num2 % num1) == 0){
-        cout << (num2 / num1);
+        return (num2 / num1);
     }
 
-    else if (num1 == num2){
-        cout << (num1 / num2);
-    }
-
-    else if (((num1 % num2) != 0) && ((num2 % num1) != 0)){
-        cout << (num1 * num2);
+    else{
+        return (num1 * num2);
     }
 }
 
-void operations(int num1, int num2, int num3) {
+int operations(int num1, int num2, int num3) {
+    cout << "исп. функция для 3х чисел" << endl;
     if ((num1 == num2) && (num2 == num3)){
-        cout << 1;
+        return 1;
     }
     else {
-        cout << -1;
+        return -1;
     }
 }
 
@@ -53,22 +51,17 @@ void func1(){
                     count++;
                 }
             }
-            operations(two_nums[0], two_nums[1]);
+            cout << operations(two_nums[0], two_nums[1]);
             break;
         }
         case 3:{
-            operations(nums[0], nums[1], nums[2]);
+            cout << operations(nums[0], nums[1], nums[2]);
             break;
         }
     }
 }
 
-void func2(){
-    unsigned short num1; 
-    unsigned short num2;
-
-    cin >> num1;
-    cin >> num2;
+void func2(int num1, int num2){
 
     unsigned short res1 = num1 + num2;
     short res2 = num1 - num2;
@@ -97,7 +90,12 @@ int main(){
         }
 
         case 2:{
-            func2();
+            unsigned short num1; 
+            unsigned short num2;
+
+            cin >> num1;
+            cin >> num2;
+            func2(num1, num2);
             break;
         }
     }
