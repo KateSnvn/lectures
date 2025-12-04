@@ -197,6 +197,31 @@ int main() {
             break;
         }
     }
+    
+    Stop* cur;
+    Stop* temp;
+    
+    cur = route1;
+    while (cur != nullptr) {
+        temp = cur;
+        cur = cur->next;
+        delete temp;
+    }
+    
+    cur = route2;
+    while (cur != nullptr) {
+        temp = cur;
+        cur = cur->next;
+        delete temp;
+    }
+    
+    cur = route3;
+    while (cur != nullptr) {
+        temp = cur;
+        cur = cur->next;
+        delete temp;
+    }
+    
     return 0;
 }
 
