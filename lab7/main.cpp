@@ -8,7 +8,7 @@ using namespace std;
 
 //--------------------------------------------------------------------------------------------------задание 1 
 
-void printMassive(const vector<int>& massive) {
+void printMassive(const vector<int> massive) {
     cout << "[";
     for (int i = 0; i < massive.size(); i++) {
         cout << massive[i];
@@ -134,80 +134,95 @@ int main() {
         int point; 
         cin >> point;
 
-        if (point == 0) {
-            break;
-        }
-
-        else if (point == 1) {
-            printMassive(massive);
-        }
-        else if (point == 2) {
-            int num; 
-            cout << "Введите число: ";
-            cin >> num;
-            cout << "До: "; 
-            printMassive(massive);
-            pushFront(massive, num);
-            cout << "После: "; 
-            printMassive(massive);
-        }
-        else if (point == 3) {
-            int num;
-            cout << "Введите число: ";
-            cin >> num;
-            cout << "До: "; 
-            printMassive(massive);
-            pushBack(massive, num);
-            cout << "После: ";
-            printMassive(massive);
-        }
-        else if (point == 4) {
-            cout << "До: ";
-            printMassive(massive);
-            clearMassive(massive);
-            cout << "После: ";
-            printMassive(massive);
-        }
-        else if (point == 5) {
-            int num;
-            cout << "Введите элемент: ";
-            cin >> num;
-            printMassive(findIndex(massive, num));
-        }
-        else if (point == 6) {
-            cout << "До: ";
-            printMassive(massive);
-            vrnt(massive);
-            cout << "После: ";
-            printMassive(massive);
-        }
-        else if (point == 7) {
-            array<int,10> arr = {3,-1,5,0,-2,9,7,-3,4,1};
-            array<int,10> arr1 = arr, arr2 = arr, arr3 = arr;
-
-            sortElements(arr1);
-            sortLinks(arr2);
-            sortPointer(&arr3);
-
-            cout << "После sortElements: ";
-            for (int i = 0; i < arr1.size(); i++) {
-                cout << i << " ";
+        switch (point) {
+            case 0: {
+                break;
             }
-            cout << "\n";
-
-            cout << "После sortLinks: ";
-            for (int i = 0; i < arr2.size(); i++) {
-                cout << i << " ";
+            case 1: {
+                printMassive(massive);
+                break;
             }
-            cout << "\n";
-
-            cout << "После sortPointer: ";
-            for (int i = 0; i < arr3.size(); i++) {
-                cout << i << " ";
+            case 2: {
+                int num; 
+                cout << "Введите число: ";
+                cin >> num;
+                cout << "До: "; 
+                printMassive(massive);
+                pushFront(massive, num);
+                cout << "После: "; 
+                printMassive(massive);
+                break;
             }
-            cout << "\n";
+            case 3: {
+                int num;
+                cout << "Введите число: ";
+                cin >> num;
+                cout << "До: "; 
+                printMassive(massive);
+                pushBack(massive, num);
+                cout << "После: ";
+                printMassive(massive);
+                break;
+            }
+            case 4: {
+                cout << "До: ";
+                printMassive(massive);
+                clearMassive(massive);
+                cout << "После: ";
+                printMassive(massive);
+                break;
+            }
+            case 5: {
+                int num;
+                cout << "Введите элемент: ";
+                cin >> num;
+                printMassive(findIndex(massive, num));
+                break;
+            }
+            case 6: {
+                cout << "До: ";
+                printMassive(massive);
+                vrnt(massive);
+                cout << "После: ";
+                printMassive(massive);
+                break;
+            }
+            case 7: {
+                array<int,10> arr = {3,-1,5,0,-2,9,7,-3,4,1};
+                array<int,10> arr1 = arr, arr2 = arr, arr3 = arr;
+
+                sortElements(arr1);
+                sortLinks(arr2);
+                sortPointer(&arr3);
+
+                cout << "После sortElements: ";
+                for (int i = 0; i < arr1.size(); i++) {
+                    cout << i << " ";
+                }
+                cout << "\n";
+
+                cout << "После sortLinks: ";
+                for (int i = 0; i < arr2.size(); i++) {
+                    cout << i << " ";
+                }
+                cout << "\n";
+
+                cout << "После sortPointer: ";
+                for (int i = 0; i < arr3.size(); i++) {
+                    cout << i << " ";
+                }
+                cout << "\n";
+                    break;
+            }
         }
     }
 
     return 0;
 }
+
+//--------------------------------------------------------------------------------------------------задание 3
+// в пункте 1 использован vector, потому что массив динамический 
+// в пункте 2 использован array, потому что массив статический 
+
+//std::vector и std::array выполняют одинаковую роль,
+//когда размер контейнера фиксирован и известен во время компиляции
