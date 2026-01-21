@@ -8,9 +8,6 @@ class Player {
 private:
     string name;
     int hp;
-    float x;
-    float y;
-    string actionStatus;
     void checkHp() {
         if (hp <= 0) {
             hp = 0;
@@ -20,6 +17,9 @@ private:
             hp = 100;
         }
     }
+    float x;
+    float y;
+    string actionStatus;
 public:
     //по умолчанию
     Player() {
@@ -36,8 +36,8 @@ public:
         x = posX;
         y = posY;
         hp = health;
-        actionStatus = status;
         checkHp();
+        actionStatus = status;
     }
 
     //копирования
@@ -50,7 +50,9 @@ public:
     }
 
     //деструктор
-    ~Player() {}
+    ~Player() {
+        cout << "Run_Destructor" << endl;
+    }
 
 
     //геттеры
@@ -71,32 +73,39 @@ public:
     }
 
     //сеттеры
-    void setPosition(float posX, float posY) {
+    void setPositionX(float posX) {
         x = posX;
+        cout << "Перемещение на X: " << posX << endl;
+    }
+    void setPositionY(float posY) {
         y = posY;
-        cout << "Смена позиции: (" << x << "; " << y << ")" << endl;
+        cout << "Перемещение на Y: " << posY << endl;
     }
 
 
-    void takeDamage(int dmg) {
-        hp -= dmg;
-        checkHp();
-        cout << name << " получил " << dmg << " урона." << endl;
-        cout << "ХП: " << hp << endl;
+    void damage(int dmg) {
+        if (dmg > 0) {
+            hp -= dmg;
+            checkHp();
+            cout << name << " получил " << dmg << " урона." << endl;
+            cout << "ХП: " << hp << endl;
+        }
     }
 
     void heal(int cnt) {
-        if (hp > 0) {
-            hp += cnt;
-            checkHp();
-            cout << name << " вылечился на " << cnt << ". Текущее ХП: " << hp << endl;
-            cout << "ХП: " << hp << endl;
-        } 
-        else {
-            cout << "Игрок мертв" << endl;
+        if (cnt > 0) {
+            if (hp > 0) {
+                hp += cnt;
+                checkHp();
+                cout << name << " вылечился на " << cnt << ". Текущее ХП: " << hp << endl;
+                cout << "ХП: " << hp << endl;
+            } 
+            else {
+                cout << "Игрок мертв и не может лечиться" << endl;
+            }
         }
     }
-    void printInfo() {
+    void info() {
         cout << "----------------------------" << endl;
         cout << "Информация" << endl;
         cout << "Имя: " << name << endl;
@@ -110,21 +119,22 @@ int main() {
 
     //cоздание через конструктор по умолчанию
     Player player1;
-    player1.printInfo();
+    player1.info();
 
     //создание через конструктор полного заполнения
     Player player2("Герой", 10.5, 20.0, 100, "Атака");
-    player2.printInfo();
+    player2.info();
 
     //создание через конструктор копирования
     Player player3 = player2;
-    player3.printInfo();
+    player3.info();
 
 
-    player1.setPosition(50.0, 50.0);
-    player2.takeDamage(30);
+    player1.setPositionX(50.0);
+    player1.setPositionY(50.0);
+    player2.damage(30);
     player2.heal(10);
-    player3.takeDamage(150);
+    player3.damage(150);
 
     return 0;
     }
