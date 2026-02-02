@@ -134,7 +134,8 @@ int main() {
     player1.setPositionY(50.0);
     player2.damage(30);
     player2.heal(10);
-    player3.damage(150);
+    player3.damage(15000);
+    player3.info();
 
     return 0;
     }
