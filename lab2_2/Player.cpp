@@ -42,6 +42,8 @@ Player& Player::operator=(const Player& other) {
 
 //деструктор
 Player::~Player() {
+    cout << "Вызван деструктор для игрока" << endl;
+    backpack.clear();
 }
 
 //+ 
@@ -80,24 +82,33 @@ Player Player::operator+(const Player& other) {
 //- 
 Player Player::operator-(const Player& other) {
     Player result;
-    
+
     const char* names[] = {"Г1", "Г2", "Г3", "Г4", "Г5", "Г6"};
     int randomIndex = rand() % 6;
     result.name = names[randomIndex];
     
-    result.posX = posX;
-    result.posY = posY;
+    result.posX = other.posX;
+    result.posY = other.posY;
     result.hp = hp;
     
-    result.backpack = backpack;
+    for (int i = 0; i < backpack.size(); i++) {
+        result.backpack.push_back(backpack[i]);
+    }
     
-    for (int i = 0; i < result.backpack.size(); i++) {
-        if (result.backpack[i] == 'a') {
-            for (int j = i; j < result.backpack.size() - 1; j++) {
-                result.backpack[j] = result.backpack[j + 1];
+    int removeCount = 1 + rand() % other.backpack.size();
+    
+    for (int r = 0; r < removeCount; r++) {
+        int randomIndex = rand() % other.backpack.size();
+        char itemToDelete = other.backpack[randomIndex];
+        
+        for (int i = 0; i < result.backpack.size(); i++) {
+            if (result.backpack[i] == itemToDelete) {
+                for (int j = i; j < result.backpack.size() - 1; j++) {
+                    result.backpack[j] = result.backpack[j + 1];
+                }
+                result.backpack.pop_back();
+                break;
             }
-            result.backpack.pop_back();
-            break;
         }
     }
     
